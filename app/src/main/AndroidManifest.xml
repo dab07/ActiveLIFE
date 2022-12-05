@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.bottomnavmenu">
+    package="com.example.androidFit">
 
 <uses-feature android:name="android.hardware.sensor.stepcounter"/>
     <uses-feature android:name="android.hardware.sensor.stepdetector"/>
@@ -12,10 +12,7 @@
         android:roundIcon="@drawable/app_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StepsCounter"></activity>
-        <activity android:name=".ArmExercise" />
-        <activity android:name=".LegExercise" />
-        <activity android:name=".AbsExercise" />
+        <activity android:name="com.example.androidFit.StepsCounter"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -24,24 +21,18 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
-        <activity android:name=".MapsActivity" />
+        <activity android:name="com.example.androidFit.MapsActivity" />
         <activity
-            android:name=".ViewCalories"
+            android:name="com.example.androidFit.ViewCalories"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/AppTheme.NoActionBar2" />
         <activity
-            android:name=".ViewSleepDuration"
+            android:name="com.example.androidFit.ViewSleepDuration"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_view_sleepduration"
             android:theme="@style/AppTheme.NoActionBar2" />
         <activity
-            android:name=".ViewWeight"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/AppTheme.NoActionBar2" />
-        <activity android:name=".WeightGain" />
-        <activity android:name=".WeightLoss" />
-        <activity
-            android:name=".MainActivity"
+            android:name="com.example.androidFit.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
