@@ -1,0 +1,133 @@
+Index: app/src/main/res/layout/add_sleep_dialog.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n\n<androidx.constraintlayout.widget.ConstraintLayout android:layout_height=\"300dp\"\n    xmlns:android=\"http://schemas.android.com/apk/res/android\" android:layout_width=\"350dp\"\n    android:layout_gravity=\"center\">\n\n    <LinearLayout\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"match_parent\"\n        android:background=\"@color/colorPrimaryDark\"\n        android:orientation=\"vertical\">\n\n\n        <LinearLayout\n            android:layout_width=\"match_parent\"\n            android:layout_marginTop=\"20dp\"\n            android:layout_height=\"wrap_content\"\n            android:gravity=\"center\"\n            android:orientation=\"horizontal\">\n            <TextView\n                android:id=\"@+id/displayText\"\n                android:layout_width=\"60dp\"\n                android:layout_height=\"wrap_content\"\n                android:textSize=\"30dp\"\n                android:gravity=\"end\"\n                android:textColor=\"@android:color/white\" />\n\n            <TextView\n                android:layout_width=\"wrap_content\"\n                android:layout_height=\"wrap_content\"\n                android:layout_marginLeft=\"20dp\"\n                android:text=\"Hrs\"\n                android:textSize=\"30dp\"\n                android:textColor=\"@android:color/white\"/>\n        </LinearLayout>\n\n        <SeekBar\n            android:id=\"@+id/seekBar\"\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:layout_marginTop=\"30dp\"\n            android:layout_marginBottom=\"70dp\"\n            android:layout_marginLeft=\"30dp\"\n            android:layout_marginRight=\"30dp\"\n            android:max=\"48\" />\n\n        <Button\n            android:id=\"@+id/addButton\"\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"wrap_content\"\n            android:layout_gravity=\"center\"\n            android:text=\"ADD\"\n            android:textColor=\"@android:color/white\"\n            android:background=\"@drawable/button_shape\" />\n\n\n    </LinearLayout>\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/add_sleep_dialog.xml b/app/src/main/res/layout/add_sleep_dialog.xml
+--- a/app/src/main/res/layout/add_sleep_dialog.xml	
++++ b/app/src/main/res/layout/add_sleep_dialog.xml	
+@@ -46,12 +46,13 @@
+ 
+         <Button
+             android:id="@+id/addButton"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
++            android:layout_width="195dp"
++            android:layout_height="92dp"
+             android:layout_gravity="center"
++            android:background="@drawable/button_shape"
+             android:text="ADD"
+-            android:textColor="@android:color/white"
+-            android:background="@drawable/button_shape" />
++            android:textSize="40dp"
++            android:textColor="@android:color/white" />
+ 
+ 
+     </LinearLayout>
+Index: app/src/main/res/layout/activity_view_sleepduration.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<RelativeLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    tools:context=\".ViewSleepDuration\"\n    android:background=\"@android:color/white\">\n\n    <com.github.mikephil.charting.charts.LineChart\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"match_parent\"\n        android:background=\"#F75526\"\n        android:id=\"@+id/lineChart\" />\n\n\n\n\n</RelativeLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_view_sleepduration.xml b/app/src/main/res/layout/activity_view_sleepduration.xml
+--- a/app/src/main/res/layout/activity_view_sleepduration.xml	
++++ b/app/src/main/res/layout/activity_view_sleepduration.xml	
+@@ -9,7 +9,7 @@
+     <com.github.mikephil.charting.charts.LineChart
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+-        android:background="#F75526"
++        android:background="@color/colorAccent"
+         android:id="@+id/lineChart" />
+ 
+ 
+Index: app/src/main/res/layout/add_calories_dialog.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n\n<RelativeLayout android:layout_height=\"250dp\"\n    xmlns:android=\"http://schemas.android.com/apk/res/android\" android:layout_width=\"350dp\"\n    android:layout_gravity=\"center\"\n    android:gravity=\"center\"\n    android:background=\"@color/colorPrimaryDark\">\n\n    <LinearLayout\n        android:id=\"@+id/top\"\n        android:layout_width=\"match_parent\"\n        android:layout_marginTop=\"20dp\"\n        android:layout_height=\"wrap_content\"\n        android:gravity=\"center\"\n        android:orientation=\"horizontal\">\n        <EditText\n            android:id=\"@+id/displayText\"\n            android:layout_width=\"100dp\"\n            android:layout_height=\"wrap_content\"\n            android:maxLength=\"7\"\n            android:gravity=\"center\"\n\n            android:textColor=\"@android:color/white\"\n            android:inputType=\"numberDecimal\"/>\n\n        <TextView\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"wrap_content\"\n            android:text=\"Cal\"\n            android:textSize=\"30dp\"\n            android:textColor=\"@android:color/white\"\n             />\n    </LinearLayout>\n\n\n    <Button\n        android:id=\"@+id/addButton\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_below=\"@+id/top\"\n        android:layout_alignParentEnd=\"true\"\n        android:layout_alignParentRight=\"true\"\n        android:layout_gravity=\"center\"\n        android:layout_marginTop=\"82dp\"\n        android:layout_marginEnd=\"132dp\"\n        android:layout_marginRight=\"132dp\"\n        android:background=\"@drawable/button_shape\"\n        android:text=\"ADD\"\n        android:textColor=\"@android:color/white\" />\n\n\n</RelativeLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/add_calories_dialog.xml b/app/src/main/res/layout/add_calories_dialog.xml
+--- a/app/src/main/res/layout/add_calories_dialog.xml	
++++ b/app/src/main/res/layout/add_calories_dialog.xml	
+@@ -4,7 +4,7 @@
+     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="350dp"
+     android:layout_gravity="center"
+     android:gravity="center"
+-    android:background="@color/colorPrimaryDark">
++    android:background="@color/Dark">
+ 
+     <LinearLayout
+         android:id="@+id/top"
+@@ -27,7 +27,7 @@
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Cal"
+-            android:textSize="30dp"
++            android:textSize="35dp"
+             android:textColor="@android:color/white"
+              />
+     </LinearLayout>
+@@ -35,17 +35,18 @@
+ 
+     <Button
+         android:id="@+id/addButton"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
++        android:layout_width="147dp"
++        android:layout_height="74dp"
+         android:layout_below="@+id/top"
+         android:layout_alignParentEnd="true"
+         android:layout_alignParentRight="true"
+         android:layout_gravity="center"
+         android:layout_marginTop="82dp"
+-        android:layout_marginEnd="132dp"
+-        android:layout_marginRight="132dp"
++        android:layout_marginEnd="97dp"
++        android:layout_marginRight="97dp"
+         android:background="@drawable/button_shape"
+         android:text="ADD"
++        android:textSize="36dp"
+         android:textColor="@android:color/white" />
+ 
+ 
+Index: app/src/main/res/values/colors.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<resources>\n    <color name=\"colorPrimary\">#008577</color>\n    <color name=\"colorPrimaryDark\">#00574B</color>\n    <color name=\"colorAccent\">#D81B60</color>\n\n    <color name=\"black_overlay\">#66000000</color>\n</resources>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/colors.xml b/app/src/main/res/values/colors.xml
+--- a/app/src/main/res/values/colors.xml	
++++ b/app/src/main/res/values/colors.xml	
+@@ -3,6 +3,6 @@
+     <color name="colorPrimary">#008577</color>
+     <color name="colorPrimaryDark">#00574B</color>
+     <color name="colorAccent">#D81B60</color>
+-
++    <color name="Dark">#000000</color>
+     <color name="black_overlay">#66000000</color>
+ </resources>
+Index: app/src/debug/res/values/google_maps_api.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\n    <!--\n    TODO: Before you run your application, you need a Google Maps API key.\n\n    To get one, follow this link, follow the directions and press \"Create\" at the end:\n\n    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=75:89:5F:07:19:46:79:85:16:FA:7C:F9:88:15:69:64:05:29:D6:68%3Bcom.example.bottomnavmenu\n\n    You can also add your credentials to an existing key, using these values:\n\n    Package name:\n    com.example.bottomnavmenu\n\n    SHA-1 certificate fingerprint:\n    75:89:5F:07:19:46:79:85:16:FA:7C:F9:88:15:69:64:05:29:D6:68\n\n    Alternatively, follow the directions here:\n    https://developers.google.com/maps/documentation/android/start#get-key\n\n    Once you have your key (it starts with \"AIza\"), replace the \"google_maps_key\"\n    string in this file.\n    -->\n    <string name=\"google_maps_key\" templateMergeStrategy=\"preserve\" translatable=\"false\">Add your key here</string>\n</resources>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/debug/res/values/google_maps_api.xml b/app/src/debug/res/values/google_maps_api.xml
+--- a/app/src/debug/res/values/google_maps_api.xml	
++++ b/app/src/debug/res/values/google_maps_api.xml	
+@@ -20,5 +20,5 @@
+     Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+     string in this file.
+     -->
+-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">Add your key here</string>
++    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAsXwFVl8b0SkqomGIAyBh1DA1psyUwj1Q</string>
+ </resources>
