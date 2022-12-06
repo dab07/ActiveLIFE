@@ -197,8 +197,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         googlePlaceUrl.append("&type="+nearbyPlace);
         googlePlaceUrl.append("&sensor=true");
 
-        //Todo: add your google api key here
-        googlePlaceUrl.append("&key="+"Add your key here");
+        googlePlaceUrl.append("&key="+"AIzaSyAsXwFVl8b0SkqomGIAyBh1DA1psyUwj1Q");
 
         Log.d("MapsActivity", "url = "+googlePlaceUrl.toString());
 

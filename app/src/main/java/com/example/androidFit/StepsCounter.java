@@ -38,6 +38,7 @@ public class StepsCounter extends AppCompatActivity implements SensorEventListen
     private Button resetButton;
     boolean activityRunning;
     private SensorManager sensorManager;
+    private TextView curStep;
 
     private boolean firstSensorReading = true;
 
@@ -58,6 +59,7 @@ public class StepsCounter extends AppCompatActivity implements SensorEventListen
 
         context = this;
 
+        curStep = findViewById(R.id.curStep);
         permanentCount =  findViewById(R.id.count);
         tempStepCount =  findViewById(R.id.tempStepCount);
         burntCalories = findViewById(R.id.burntCalories);
@@ -81,9 +83,6 @@ public class StepsCounter extends AppCompatActivity implements SensorEventListen
         }
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-
-
-
 
     }
 
@@ -134,10 +133,6 @@ public class StepsCounter extends AppCompatActivity implements SensorEventListen
 
     void animateProgressBar()
     {
-      /*  System.out.println("-------------------------------------------------------------------------------------");
-        System.out.println("permCount = "+permanentCount.getText().toString());
-        System.out.println("last step count = "+ stepCountAtLastReset);
-*/
         int steps = Integer.parseInt(permanentCount.getText().toString()) - stepCountAtLastReset;
         circularProgressBar.setProgressWithAnimation((float)steps/20 , 1000L);
     }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="counter" type="id" />
     <item name="week_counter" type="id" />
+    <item name="curStep" type="id" />
 </resources>

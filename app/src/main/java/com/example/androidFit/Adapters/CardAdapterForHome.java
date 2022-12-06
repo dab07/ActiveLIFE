@@ -47,9 +47,9 @@ public class CardAdapterForHome extends RecyclerView.Adapter<CardAdapterForHome.
     @Override
     public void onBindViewHolder(@NonNull CardViewHolder cardViewHolder, int i) {
 
-        Card card = list.get(i);
-        cardViewHolder.textView.setText(card.getName());
-        cardViewHolder.imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.app_icon_round));
+//        Card card = list.get(i);
+//        cardViewHolder.textView.setText(card.getName());
+//        cardViewHolder.imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.app_icon_round));
 
 
     }
