@@ -1,0 +1,193 @@
+Index: app/src/main/java/com/example/androidFit/Adapters/CardAdapterForHome.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.androidFit.Adapters;\n\nimport android.content.Context;\nimport android.content.Intent;\nimport androidx.annotation.NonNull;\nimport androidx.recyclerview.widget.RecyclerView;\nimport android.view.LayoutInflater;\nimport android.view.View;\nimport android.view.ViewGroup;\nimport android.widget.FrameLayout;\nimport android.widget.ImageView;\nimport android.widget.TextView;\nimport com.example.androidFit.DatabaseHandlers.UserStatsDBHandler;\nimport com.example.androidFit.Model.Card;\nimport com.example.androidFit.R;\n/*\nimport androidx.annotation.NonNull;\nimport androidx.recyclerview.widget.RecyclerView;*/\n\n\n\nimport java.util.List;\n\npublic class CardAdapterForHome extends RecyclerView.Adapter<CardAdapterForHome.CardViewHolder> {\n\n    private Context context;\n    private List<Card> list;\n    private UserStatsDBHandler DbHandler;\n\n\n    public CardAdapterForHome(Context context, List<Card> list) {\n        this.context = context;\n        this.list = list;\n        this.DbHandler = new UserStatsDBHandler(context);\n    }\n\n    @NonNull\n    @Override\n    public CardViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {\n\n        LayoutInflater inflater = LayoutInflater.from(context);\n        View view = inflater.inflate(R.layout.card_layout , null , false);\n        view.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT , FrameLayout.LayoutParams.WRAP_CONTENT));\n        return new CardViewHolder(view);\n    }\n\n    @Override\n    public void onBindViewHolder(@NonNull CardViewHolder cardViewHolder, int i) {\n\n        Card card = list.get(i);\n        cardViewHolder.textView.setText(card.getName());\n        cardViewHolder.imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.app_icon_round));\n\n\n    }\n\n    @Override\n    public int getItemCount() {\n        return list.size();\n    }\n\n    class CardViewHolder extends  RecyclerView.ViewHolder\n    {\n        TextView textView;\n        ImageView imageView;\n        public CardViewHolder(@NonNull View itemView) {\n            super(itemView);\n\n            textView = itemView.findViewById(R.id.textView);\n            imageView = itemView.findViewById(R.id.imageView);\n\n\n\n\n        }\n\n\n\n\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/androidFit/Adapters/CardAdapterForHome.java b/app/src/main/java/com/example/androidFit/Adapters/CardAdapterForHome.java
+--- a/app/src/main/java/com/example/androidFit/Adapters/CardAdapterForHome.java	(revision da388936a6b871e20ed51801a0cf4c1185970818)
++++ b/app/src/main/java/com/example/androidFit/Adapters/CardAdapterForHome.java	(date 1670310414537)
+@@ -47,9 +47,9 @@
+     @Override
+     public void onBindViewHolder(@NonNull CardViewHolder cardViewHolder, int i) {
+ 
+-        Card card = list.get(i);
+-        cardViewHolder.textView.setText(card.getName());
+-        cardViewHolder.imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.app_icon_round));
++//        Card card = list.get(i);
++//        cardViewHolder.textView.setText(card.getName());
++//        cardViewHolder.imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.app_icon_round));
+ 
+ 
+     }
+Index: app/src/main/res/layout/activity_steps_counter.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    android:orientation=\"vertical\"\n    android:paddingTop=\"30dp\"\n    android:gravity=\"center\"\n    tools:context=\".StepsCounter\">\n\n    <com.mikhaellopez.circularprogressbar.CircularProgressBar\n        android:id=\"@+id/circularProgressBar\"\n        android:layout_width=\"200dp\"\n        android:layout_height=\"200dp\"\n        app:cpb_background_progressbar_color=\"#F0E1DC\"\n        app:cpb_background_progressbar_width=\"5dp\"\n        app:cpb_progress_direction=\"to_right\"\n        app:cpb_progressbar_color=\"#F75526\"\n        app:cpb_progressbar_width=\"10dp\"\n        app:cpb_round_border=\"true\" >\n    </com.mikhaellopez.circularprogressbar.CircularProgressBar>\n\n    <LinearLayout\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"wrap_content\"\n        android:orientation=\"horizontal\"\n        android:gravity=\"left\"\n        android:padding=\"10dp\"\n        >\n        <TextView\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"wrap_content\"\n            android:text=\"Target to Burn:\"\n            android:textSize=\"20dp\"\n            />\n        <TextView\n            android:id=\"@+id/targetToBurn\"\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"wrap_content\"\n            android:layout_marginLeft=\"10dp\"\n            android:layout_marginRight=\"10dp\"\n            android:text=\"0\"\n            android:textSize=\"20dp\"\n            />\n        <TextView\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"wrap_content\"\n            android:text=\"Cal\"\n            android:textSize=\"20dp\"\n            />\n\n        <LinearLayout\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:gravity=\"right\">\n\n            <Button\n                android:id=\"@+id/resetButton\"\n                android:layout_width=\"57dp\"\n                android:layout_height=\"30dp\"\n                android:layout_gravity=\"end\"\n                android:layout_marginLeft=\"10dp\"\n                android:background=\"#E66D49\"\n                android:text=\"RESET\"\n\n                android:textColor=\"@android:color/white\"\n                android:textStyle=\"bold\"\n\n                />\n        </LinearLayout>\n\n\n\n    </LinearLayout>\n    <LinearLayout\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"wrap_content\"\n        android:orientation=\"horizontal\"\n        android:gravity=\"left\"\n        android:padding=\"10dp\"\n        >\n        <TextView\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"wrap_content\"\n            android:text=\"Calories Burnt :\"\n            android:textSize=\"20dp\"\n            />\n        <TextView\n            android:id=\"@+id/burntCalories\"\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"wrap_content\"\n            android:layout_marginLeft=\"10dp\"\n            android:layout_marginRight=\"10dp\"\n            android:text=\"0\"\n            android:textSize=\"20dp\"\n            />\n        <TextView\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"wrap_content\"\n            android:text=\"Cal\"\n            android:textSize=\"20dp\"\n            />\n\n\n\n\n    </LinearLayout>\n\n\n    <LinearLayout\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"match_parent\"\n        android:padding=\"30dp\"\n        android:gravity=\"center\"\n        android:orientation=\"vertical\"\n        >\n        <TextView\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"wrap_content\"\n\n            android:text=\"Steps count since last reset\"\n            android:textSize=\"20dp\"\n            />\n        <TextView\n            android:id=\"@+id/tempStepCount\"\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"wrap_content\"\n            android:text=\"0\"\n            android:textSize=\"36dp\"\n            />\n\n\n\n        <TextView\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"wrap_content\"\n            android:text=\"Steps count since reboot\"\n            android:textSize=\"20dp\"\n            />\n\n        <TextView\n            android:id=\"@+id/count\"\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"wrap_content\"\n            android:text=\"0\"\n            android:textSize=\"36dp\"\n            />\n\n    </LinearLayout>\n\n</LinearLayout>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_steps_counter.xml b/app/src/main/res/layout/activity_steps_counter.xml
+--- a/app/src/main/res/layout/activity_steps_counter.xml	(revision da388936a6b871e20ed51801a0cf4c1185970818)
++++ b/app/src/main/res/layout/activity_steps_counter.xml	(date 1670311829744)
+@@ -102,10 +102,6 @@
+             android:text="Cal"
+             android:textSize="20dp"
+             />
+-
+-
+-
+-
+     </LinearLayout>
+ 
+ 
+@@ -113,9 +109,21 @@
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:padding="30dp"
+-        android:gravity="center"
+         android:orientation="vertical"
+         >
++
++<!--        <TextView-->
++<!--            android:layout_width="wrap_content"-->
++<!--            android:layout_height="wrap_content"-->
++<!--            android:text="@string/today_s_step"-->
++<!--            android:textSize="20dp" />-->
++<!--        <TextView-->
++<!--            android:id="@+id/curStep"-->
++<!--            android:layout_width="wrap_content"-->
++<!--            android:layout_height="wrap_content"-->
++<!--            android:text="0"-->
++<!--            android:textSize="36dp"-->
++<!--            />-->
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+@@ -132,7 +140,6 @@
+             />
+ 
+ 
+-
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+Index: app/src/main/java/com/example/androidFit/MapsActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.androidFit;\nimport android.Manifest;\nimport android.content.Context;\nimport android.content.Intent;\nimport android.content.pm.PackageManager;\nimport android.location.Location;\nimport android.location.LocationManager;\nimport android.net.ConnectivityManager;\nimport android.net.NetworkInfo;\nimport android.os.Build;\nimport android.os.Bundle;\nimport android.util.Log;\nimport android.view.View;\nimport android.widget.Toast;\n\nimport androidx.annotation.NonNull;\nimport androidx.annotation.Nullable;\nimport androidx.core.app.ActivityCompat;\nimport androidx.core.content.ContextCompat;\nimport androidx.fragment.app.FragmentActivity;\n\nimport com.example.androidFit.SupportClasses.GetNearbyPlacesData;\nimport com.google.android.gms.common.ConnectionResult;\nimport com.google.android.gms.common.api.GoogleApiClient;\nimport com.google.android.gms.location.LocationRequest;\nimport com.google.android.gms.location.LocationServices;\nimport com.google.android.gms.maps.CameraUpdateFactory;\nimport com.google.android.gms.maps.GoogleMap;\nimport com.google.android.gms.location.LocationListener;\nimport com.google.android.gms.maps.OnMapReadyCallback;\nimport com.google.android.gms.maps.SupportMapFragment;\nimport com.google.android.gms.maps.model.BitmapDescriptorFactory;\nimport com.google.android.gms.maps.model.LatLng;\nimport com.google.android.gms.maps.model.Marker;\nimport com.google.android.gms.maps.model.MarkerOptions;\n\npublic class MapsActivity extends FragmentActivity implements OnMapReadyCallback,\n        GoogleApiClient.ConnectionCallbacks,\n        GoogleApiClient.OnConnectionFailedListener,\n        LocationListener\n{\n\n//todo 19.18\n    private View mapView;\n    private GoogleMap mMap;\n    private GoogleApiClient client;\n    private LocationRequest locationRequest;\n    private Location lastlocation;\n    private LocationManager locationManager;\n    private Marker currentLocationmMarker;\n    public static final int REQUEST_LOCATION_CODE = 99;\n    int PROXIMITY_RADIUS = 10000;\n    double latitude,longitude;\n    private int LOCATION_MIN_DISTANCE = 20;\n    private int LOCATION_MIN_TIME = 4000;\n\n\n\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n        setContentView(R.layout.activity_maps);\n\n        if(!isConnectedToNetwork())\n        {\n            Toast.makeText(this  ,\"Turn on mobile data or Wifi\",Toast.LENGTH_LONG).show();\n            finish();\n        }\n\n        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)\n        {\n            checkLocationPermission();\n        }\n\n\n\n        // Obtain the SupportMapFragment and get notified when the map is ready to be used.\n        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()\n                .findFragmentById(R.id.map);\n        mapView =  mapFragment.getView();\n        mapFragment.getMapAsync(this);\n\n\n\n\n       /* locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);\n\n        initMap();\n        getCurrentLocation();*/\n    }\n\n    @Override\n    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {\n        switch(requestCode)\n        {\n            case REQUEST_LOCATION_CODE:\n                if(grantResults.length >0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)\n                {\n                    if(ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) !=  PackageManager.PERMISSION_GRANTED)\n                    {\n                        if(client == null)\n                        {\n                            buildGoogleApiClient();\n                        }\n                        mMap.setMyLocationEnabled(true);\n                    }\n\n                    if(ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) ==  PackageManager.PERMISSION_GRANTED)\n                    {\n                        mMap.setMyLocationEnabled(true);\n\n                        Intent intent = getIntent();\n                        finish();\n                        startActivity(intent);\n                    }\n\n                }\n                else\n                {\n                    Toast.makeText(this,\"Location Permission Denied\" , Toast.LENGTH_LONG).show();\n                }\n        }\n    }\n\n\n    @Override\n    public void onMapReady(GoogleMap googleMap) {\n        mMap = googleMap;\n\n\n        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {\n            buildGoogleApiClient();\n            mMap.setMyLocationEnabled(true);\n\n            View locationButton = ((View) mapView.findViewById(Integer.parseInt(\"1\")).getParent()).findViewById(Integer.parseInt(\"2\"));\n\n\n\n            locationButton.callOnClick();\n\n        }\n\n\n    }\n\n\n\n    protected synchronized void buildGoogleApiClient() {\n        client = new GoogleApiClient.Builder(this).addConnectionCallbacks(this).addOnConnectionFailedListener(this).addApi(LocationServices.API).build();\n        client.connect();\n    }\n\n    @Override\n    public void onLocationChanged(Location location) {\n\n        latitude = location.getLatitude();\n        longitude = location.getLongitude();\n        lastlocation = location;\n        if(currentLocationmMarker != null)\n        {\n            currentLocationmMarker.remove();\n        }\n        Log.d(\"lat = \",\"\"+latitude);\n        LatLng latLng = new LatLng(location.getLatitude() , location.getLongitude());\n        MarkerOptions markerOptions = new MarkerOptions();\n        markerOptions.position(latLng);\n        markerOptions.title(\"Current Location\");\n        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));\n        currentLocationmMarker = mMap.addMarker(markerOptions);\n        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));\n        mMap.animateCamera(CameraUpdateFactory.zoomBy(10));\n\n        //todo delete following lines\n        Object[] dataTransfer = new Object[2];\n        GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();\n        String url = getUrl(latitude, longitude, \"hospital\");\n        dataTransfer[0] = mMap;\n        dataTransfer[1] = url;\n        getNearbyPlacesData.execute(dataTransfer);\n        Toast.makeText(MapsActivity.this, \"Showing Nearby Hospitals\", Toast.LENGTH_SHORT).show();\n        //todo end\n\n        if(client != null)\n        {\n            LocationServices.FusedLocationApi.removeLocationUpdates(client,this);\n        }\n    }\n\n\n\n    private String getUrl(double latitude , double longitude , String nearbyPlace)\n    {\n\n        StringBuilder googlePlaceUrl = new StringBuilder(\"https://maps.googleapis.com/maps/api/place/nearbysearch/json?\");\n        googlePlaceUrl.append(\"location=\"+latitude+\",\"+longitude);\n        googlePlaceUrl.append(\"&radius=\"+PROXIMITY_RADIUS);\n        googlePlaceUrl.append(\"&type=\"+nearbyPlace);\n        googlePlaceUrl.append(\"&sensor=true\");\n\n        //Todo: add your google api key here\n        googlePlaceUrl.append(\"&key=\"+\"Add your key here\");\n\n        Log.d(\"MapsActivity\", \"url = \"+googlePlaceUrl.toString());\n\n        return googlePlaceUrl.toString();\n    }\n\n    @Override\n    public void onConnected(@Nullable Bundle bundle) {\n\n        locationRequest = new LocationRequest();\n        locationRequest.setInterval(100);\n        locationRequest.setFastestInterval(1000);\n        locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);\n\n\n\n        if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION ) == PackageManager.PERMISSION_GRANTED)\n        {\n            LocationServices.FusedLocationApi.requestLocationUpdates(client, locationRequest, this);\n        }\n    }\n\n\n    public boolean checkLocationPermission()\n    {\n        if(ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)  != PackageManager.PERMISSION_GRANTED )\n        {\n\n            if (ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.ACCESS_FINE_LOCATION))\n            {\n                ActivityCompat.requestPermissions(this,new String[] {Manifest.permission.ACCESS_FINE_LOCATION },REQUEST_LOCATION_CODE);\n            }\n            else\n            {\n                ActivityCompat.requestPermissions(this,new String[] {Manifest.permission.ACCESS_FINE_LOCATION },REQUEST_LOCATION_CODE);\n            }\n\n            return false;\n        }\n        else\n            return true;\n    }\n\n\n    @Override\n    public void onConnectionSuspended(int i) {\n    }\n\n    @Override\n    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {\n    }\n\n\n    public  boolean isConnectedToNetwork()\n    {\n\n        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);\n\n        return connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||\n                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED;\n\n    }\n\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/androidFit/MapsActivity.java b/app/src/main/java/com/example/androidFit/MapsActivity.java
+--- a/app/src/main/java/com/example/androidFit/MapsActivity.java	(revision da388936a6b871e20ed51801a0cf4c1185970818)
++++ b/app/src/main/java/com/example/androidFit/MapsActivity.java	(date 1670310929470)
+@@ -197,8 +197,7 @@
+         googlePlaceUrl.append("&type="+nearbyPlace);
+         googlePlaceUrl.append("&sensor=true");
+ 
+-        //Todo: add your google api key here
+-        googlePlaceUrl.append("&key="+"Add your key here");
++        googlePlaceUrl.append("&key="+"AIzaSyAsXwFVl8b0SkqomGIAyBh1DA1psyUwj1Q");
+ 
+         Log.d("MapsActivity", "url = "+googlePlaceUrl.toString());
+ 
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\n    <string name=\"app_name\">HealthFIt</string>\n    <string name=\"title_home\">Home</string>\n    <string name=\"title_add\">Add</string>\n    <string name=\"title_view\">View</string>\n    <string name=\"title_activity_nav_add\">NavAddActivity</string>\n    <string name=\"title_activity_nav_view\">NavViewActivity</string>\n\n    <!-- TODO: Remove or change this placeholder text -->\n    <string name=\"hello_blank_fragment\">Hello blank fragment</string>\n    <string name=\"title_activity_temp\">tempActivity</string>\n\n    <string name=\"title_activity_view_sleepduration\">ViewSleepduration</string>\n    <string name=\"dummy_button\">Dummy Button</string>\n    <string name=\"dummy_content\">DUMMY\\nCONTENT</string>\n    <string name=\"title_activity_d_emo_maps\">Map</string>\n\n    <string name=\"navigation_drawer_open\">Open navigation drawer</string>\n    <string name=\"navigation_drawer_close\">Close navigation drawer</string>\n</resources>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/strings.xml b/app/src/main/res/values/strings.xml
+--- a/app/src/main/res/values/strings.xml	(revision da388936a6b871e20ed51801a0cf4c1185970818)
++++ b/app/src/main/res/values/strings.xml	(date 1670310108356)
+@@ -17,4 +17,5 @@
+ 
+     <string name="navigation_drawer_open">Open navigation drawer</string>
+     <string name="navigation_drawer_close">Close navigation drawer</string>
++    <string name="today_s_step">Today\'s Step</string>
+ </resources>
+Index: app/src/debug/res/values/google_maps_api.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\n    <!--\n    TODO: Before you run your application, you need a Google Maps API key.\n\n    To get one, follow this link, follow the directions and press \"Create\" at the end:\n\n    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=75:89:5F:07:19:46:79:85:16:FA:7C:F9:88:15:69:64:05:29:D6:68%3Bcom.example.bottomnavmenu\n\n    You can also add your credentials to an existing key, using these values:\n\n    Package name:\n    com.example.bottomnavmenu\n\n    SHA-1 certificate fingerprint:\n    75:89:5F:07:19:46:79:85:16:FA:7C:F9:88:15:69:64:05:29:D6:68\n\n    Alternatively, follow the directions here:\n    https://developers.google.com/maps/documentation/android/start#get-key\n\n    Once you have your key (it starts with \"AIza\"), replace the \"google_maps_key\"\n    string in this file.\n    -->\n    <string name=\"google_maps_key\" templateMergeStrategy=\"preserve\" translatable=\"false\">Add your key here</string>\n</resources>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/debug/res/values/google_maps_api.xml b/app/src/debug/res/values/google_maps_api.xml
+--- a/app/src/debug/res/values/google_maps_api.xml	(revision da388936a6b871e20ed51801a0cf4c1185970818)
++++ b/app/src/debug/res/values/google_maps_api.xml	(date 1670310752195)
+@@ -20,5 +20,5 @@
+     Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+     string in this file.
+     -->
+-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">Add your key here</string>
++    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAsXwFVl8b0SkqomGIAyBh1DA1psyUwj1Q</string>
+ </resources>
+Index: app/src/main/res/values/ids.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<resources>\n    <item name=\"counter\" type=\"id\" />\n    <item name=\"week_counter\" type=\"id\" />\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/ids.xml b/app/src/main/res/values/ids.xml
+--- a/app/src/main/res/values/ids.xml	(revision da388936a6b871e20ed51801a0cf4c1185970818)
++++ b/app/src/main/res/values/ids.xml	(date 1670310108353)
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <resources>
+-    <item name="counter" type="id" />
+     <item name="week_counter" type="id" />
++    <item name="curStep" type="id" />
+ </resources>
+\ No newline at end of file
+Index: app/src/main/java/com/example/androidFit/StepsCounter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.androidFit;\n\nimport androidx.appcompat.app.AppCompatActivity;\n\nimport android.app.Dialog;\nimport android.content.Context;\nimport android.hardware.Sensor;\nimport android.hardware.SensorEvent;\nimport android.hardware.SensorEventListener;\nimport android.hardware.SensorManager;\nimport android.os.Bundle;\nimport android.view.View;\nimport android.widget.Button;\nimport android.widget.EditText;\nimport android.widget.TextView;\nimport android.widget.Toast;\n\nimport com.example.androidFit.R;\nimport com.mikhaellopez.circularprogressbar.CircularProgressBar;\n\nimport java.io.BufferedReader;\nimport java.io.FileInputStream;\nimport java.io.FileNotFoundException;\nimport java.io.FileOutputStream;\nimport java.io.IOException;\nimport java.io.InputStreamReader;\nimport java.text.DecimalFormat;\n\npublic class StepsCounter extends AppCompatActivity implements SensorEventListener\n{\n    private TextView permanentCount;\n    private TextView tempStepCount;\n    private TextView burntCalories;\n    private TextView targetToBurn;\n    private CircularProgressBar circularProgressBar;\n    private Button resetButton;\n    boolean activityRunning;\n    private SensorManager sensorManager;\n\n    private boolean firstSensorReading = true;\n\n    private Context context;\n    private float targetCalories;\n    private int stepCountAtLastReset;\n\n    DecimalFormat df = new DecimalFormat(\"0.00\");\n\n    private final String TARGET_CAL_FILE = \"targetCalories.txt\";\n    private final String LAST_STEP_CNT_FILE = \"lastStepCount.txt\";\n\n\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n        setContentView(R.layout.activity_steps_counter);\n\n        context = this;\n\n        permanentCount =  findViewById(R.id.count);\n        tempStepCount =  findViewById(R.id.tempStepCount);\n        burntCalories = findViewById(R.id.burntCalories);\n        targetToBurn = findViewById(R.id.targetToBurn);\n\n        circularProgressBar = findViewById(R.id.circularProgressBar);\n        resetButton = findViewById(R.id.resetButton);\n\n        resetButton.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View v) {\n                targetSetPopup();\n            }\n        });\n\n\n        try {\n            initActivity();\n        } catch (IOException e) {\n            e.printStackTrace();\n        }\n\n        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);\n\n\n\n\n    }\n\n\n    @Override\n    protected void onPostResume() {\n        super.onPostResume();\n        activityRunning = true;\n        Sensor counter = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);\n        if(counter != null)\n        {\n            sensorManager.registerListener(this ,counter , SensorManager.SENSOR_DELAY_UI);\n        }\n\n        else\n            Toast.makeText(this ,  \"The device doesn't have support to count steps\" , Toast.LENGTH_LONG).show();\n    }\n\n    @Override\n    protected void onPause() {\n        super.onPause();\n        activityRunning = false;\n    }\n\n    @Override\n    public void onSensorChanged(SensorEvent event) {\n        if(activityRunning)\n        {\n            permanentCount.setText(String.valueOf((int)event.values[0]));\n            int steps = (int)event.values[0] - stepCountAtLastReset;\n            tempStepCount.setText(String.valueOf(steps));\n            burntCalories.setText( df.format( (float)steps/20));\n\n            if(firstSensorReading) {\n                firstSensorReading = false;\n                animateProgressBar();\n            }\n\n            circularProgressBar.setProgress(Math.min((float)steps/20 ,  targetCalories));\n\n        }\n\n    }\n\n    @Override\n    public void onAccuracyChanged(Sensor sensor, int accuracy) {\n    }\n\n    void animateProgressBar()\n    {\n      /*  System.out.println(\"-------------------------------------------------------------------------------------\");\n        System.out.println(\"permCount = \"+permanentCount.getText().toString());\n        System.out.println(\"last step count = \"+ stepCountAtLastReset);\n*/\n        int steps = Integer.parseInt(permanentCount.getText().toString()) - stepCountAtLastReset;\n        circularProgressBar.setProgressWithAnimation((float)steps/20 , 1000L);\n    }\n\n    void initProgressBar()\n    {\n        circularProgressBar.setProgressMax(targetCalories);\n        circularProgressBar.setProgress(0);\n    }\n\n    void initActivity() throws IOException {\n        importStepCountAtLastReset();\n        importTargetCalories();\n\n        targetToBurn.setText(String.valueOf(targetCalories));\n        int steps = Integer.parseInt(permanentCount.getText().toString()) - stepCountAtLastReset;\n        tempStepCount.setText(String.valueOf(steps));\n        burntCalories.setText( df.format( (float)steps/20));\n\n        initProgressBar();\n    }\n\n\n    private void targetSetPopup()\n    {\n        final EditText displayText;\n        final Button setButton;\n\n        final Dialog dialog = new Dialog(context);\n\n        dialog.setContentView(R.layout.set_target_to_burn);\n\n        displayText = dialog.findViewById(R.id.displayText);\n\n        setButton =  dialog.findViewById(R.id.setButton);\n\n\n\n\n        setButton.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View v) {\n                try {\n                    String calStr = displayText.getText().toString();\n\n                    if(! calStr.equals(\"\")) {\n                        exportStepCountAtLastReset(permanentCount.getText().toString());\n                        exportTargetCalories(calStr);\n\n                        tempStepCount.setText(\"0\");\n\n                        initActivity();\n\n                        dialog.dismiss();\n                    }\n\n                } catch (IOException e) {\n                    e.printStackTrace();\n                }\n            }\n        });\n\n        dialog.show();\n\n    }\n\n\n    void importTargetCalories() throws IOException {\n        FileInputStream fis = null;\n\n        try {\n            fis = openFileInput(TARGET_CAL_FILE);\n            BufferedReader reader = new BufferedReader(new BufferedReader(new InputStreamReader(fis)));\n            targetCalories = Float.parseFloat(reader.readLine());\n\n        } catch (Exception e) {\n\n\n            targetCalories = 0;\n            e.printStackTrace();\n        }\n        finally {\n            if(fis != null)\n            {\n                fis.close();\n            }\n        }\n    }\n\n    void importStepCountAtLastReset() throws IOException {\n        FileInputStream fis = null;\n\n        try {\n            fis = openFileInput(LAST_STEP_CNT_FILE);\n            BufferedReader reader = new BufferedReader(new BufferedReader(new InputStreamReader(fis)));\n            stepCountAtLastReset = Integer.parseInt(reader.readLine());\n\n        } catch (Exception e) {\n\n            stepCountAtLastReset = 0;\n            e.printStackTrace();\n        }\n        finally {\n            if(fis != null)\n            {\n                fis.close();\n            }\n        }\n    }\n\n    void exportTargetCalories(String str) throws IOException {\n        FileOutputStream fos = null;\n        str = str+\"\\n\";\n\n        try {\n            fos = openFileOutput(TARGET_CAL_FILE , MODE_PRIVATE);\n            fos.write(str.getBytes());\n        } catch (FileNotFoundException e) {\n            e.printStackTrace();\n        } catch (IOException e) {\n            e.printStackTrace();\n        }\n        finally {\n            if(fos != null)\n            {\n                fos.close();\n            }\n        }\n    }\n\n    void exportStepCountAtLastReset(String str) throws IOException {\n        FileOutputStream fos = null;\n\n        try {\n            fos = openFileOutput(LAST_STEP_CNT_FILE , MODE_PRIVATE);\n            fos.write(str.getBytes());\n        } catch (FileNotFoundException e) {\n            e.printStackTrace();\n        } catch (IOException e) {\n            e.printStackTrace();\n        }\n        finally {\n            if(fos != null)\n            {\n                fos.close();\n            }\n        }\n    }\n\n\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/androidFit/StepsCounter.java b/app/src/main/java/com/example/androidFit/StepsCounter.java
+--- a/app/src/main/java/com/example/androidFit/StepsCounter.java	(revision da388936a6b871e20ed51801a0cf4c1185970818)
++++ b/app/src/main/java/com/example/androidFit/StepsCounter.java	(date 1670310885996)
+@@ -36,6 +36,7 @@
+     private Button resetButton;
+     boolean activityRunning;
+     private SensorManager sensorManager;
++    private TextView curStep;
+ 
+     private boolean firstSensorReading = true;
+ 
+@@ -56,6 +57,7 @@
+ 
+         context = this;
+ 
++        curStep = findViewById(R.id.curStep);
+         permanentCount =  findViewById(R.id.count);
+         tempStepCount =  findViewById(R.id.tempStepCount);
+         burntCalories = findViewById(R.id.burntCalories);
+@@ -80,9 +82,6 @@
+ 
+         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+ 
+-
+-
+-
+     }
+ 
+ 
+@@ -132,10 +131,6 @@
+ 
+     void animateProgressBar()
+     {
+-      /*  System.out.println("-------------------------------------------------------------------------------------");
+-        System.out.println("permCount = "+permanentCount.getText().toString());
+-        System.out.println("last step count = "+ stepCountAtLastReset);
+-*/
+         int steps = Integer.parseInt(permanentCount.getText().toString()) - stepCountAtLastReset;
+         circularProgressBar.setProgressWithAnimation((float)steps/20 , 1000L);
+     }

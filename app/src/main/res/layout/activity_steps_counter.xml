@@ -112,18 +112,18 @@
         android:orientation="vertical"
         >
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/today_s_step"-->
-<!--            android:textSize="20dp" />-->
-<!--        <TextView-->
-<!--            android:id="@+id/curStep"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="0"-->
-<!--            android:textSize="36dp"-->
-<!--            />-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/today_s_step"
+            android:textSize="20dp" />
+        <TextView
+            android:id="@+id/counter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="36dp"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

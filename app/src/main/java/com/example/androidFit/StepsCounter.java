@@ -2,8 +2,11 @@ package com.example.androidFit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -11,6 +14,7 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +22,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.androidFit.R;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.fitness.Fitness;
+import com.google.android.gms.fitness.FitnessOptions;
+import com.google.android.gms.fitness.data.DataSource;
+import com.google.android.gms.fitness.data.DataType;
+import com.google.android.gms.fitness.data.Field;
 import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 
 import java.io.BufferedReader;
@@ -27,9 +37,23 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.DecimalFormat;
+import java.util.Locale;
+import java.util.Objects;
 
 public class StepsCounter extends AppCompatActivity implements SensorEventListener
 {
+    private static final int REQUEST_OAUTH_REQUEST_CODE = 0x1001;
+    private static final String TAG = "MainActivity";
+    private TextView counter;
+    private TextView weekCounter;
+
+    static DataSource ESTIMATED_STEP_DELTAS = new DataSource.Builder()
+            .setDataType(DataType.TYPE_STEP_COUNT_DELTA)
+            .setType(DataSource.TYPE_DERIVED)
+            .setStreamName("estimated_steps")
+            .setAppPackageName("com.google.android.gms")
+            .build();
+
     private TextView permanentCount;
     private TextView tempStepCount;
     private TextView burntCalories;
@@ -52,6 +76,7 @@ public class StepsCounter extends AppCompatActivity implements SensorEventListen
     private final String LAST_STEP_CNT_FILE = "lastStepCount.txt";
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +84,6 @@ public class StepsCounter extends AppCompatActivity implements SensorEventListen
 
         context = this;
 
-        curStep = findViewById(R.id.curStep);
         permanentCount =  findViewById(R.id.count);
         tempStepCount =  findViewById(R.id.tempStepCount);
         burntCalories = findViewById(R.id.burntCalories);
@@ -74,7 +98,15 @@ public class StepsCounter extends AppCompatActivity implements SensorEventListen
                 targetSetPopup();
             }
         });
+        counter = findViewById(R.id.counter);
+        weekCounter = findViewById(R.id.week_counter);
 
+        if (hasFitPermission()) {
+            readStepCountDelta();
+//            readHistoricStepCount();
+        } else {
+            requestFitnessPermission();
+        }
 
         try {
             initActivity();
@@ -83,6 +115,66 @@ public class StepsCounter extends AppCompatActivity implements SensorEventListen
         }
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+
+    }
+    private boolean hasFitPermission() {
+        FitnessOptions fitnessOptions = getFitnessSignInOptions();
+        return GoogleSignIn.hasPermissions(GoogleSignIn.getLastSignedInAccount(this), fitnessOptions);
+    }
+    private void requestFitnessPermission() {
+        GoogleSignIn.requestPermissions(
+                this,
+                REQUEST_OAUTH_REQUEST_CODE,
+                GoogleSignIn.getLastSignedInAccount(this),
+                getFitnessSignInOptions());
+    }
+
+    private FitnessOptions getFitnessSignInOptions() {
+        return FitnessOptions.builder()
+                .addDataType(DataType.TYPE_STEP_COUNT_CUMULATIVE)
+                .addDataType(DataType.TYPE_STEP_COUNT_DELTA)
+                .addDataType(DataType.AGGREGATE_DISTANCE_DELTA)
+                .build();
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == REQUEST_OAUTH_REQUEST_CODE) {
+                Log.i(TAG, "Fitness permission granted");
+                subscribeStepCount();
+                readStepCountDelta(); // Read today's data
+//                readHistoricStepCount(); // Read last weeks data
+            }
+        } else {
+            Log.i(TAG, "Fitness permission denied");
+        }
+    }
+    private void subscribeStepCount() {
+        Fitness.getRecordingClient(this, Objects.requireNonNull(GoogleSignIn.getLastSignedInAccount(this)))
+                .subscribe(DataType.TYPE_STEP_COUNT_CUMULATIVE);
+    }
+    private void readStepCountDelta() {
+        if (!hasFitPermission()) {
+            requestFitnessPermission();
+            return;
+        }
+
+        Fitness.getHistoryClient(this, Objects.requireNonNull(GoogleSignIn.getLastSignedInAccount(this)))
+                .readDailyTotal(DataType.AGGREGATE_STEP_COUNT_DELTA)
+                .addOnSuccessListener(
+                        dataSet -> {
+                            long total =
+                                    dataSet.isEmpty()
+                                            ? 0
+                                            : dataSet.getDataPoints().get(0).getValue(Field.FIELD_STEPS).asInt();
+                            Log.d(TAG, "Total steps: " + total);
+                            //display counts on screen
+                            counter.setText(String.format(Locale.ENGLISH, "%d", total));
+                        })
+                .addOnFailureListener(
+                        e -> Log.w(TAG, "There was a problem getting the step count.", e));
+
 
     }
 
