@@ -1,0 +1,38 @@
+Index: app/src/debug/res/values/google_maps_api.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\n    <!--\n    TODO: Before you run your application, you need a Google Maps API key.\n\n    To get one, follow this link, follow the directions and press \"Create\" at the end:\n\n    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=75:89:5F:07:19:46:79:85:16:FA:7C:F9:88:15:69:64:05:29:D6:68%3Bcom.example.bottomnavmenu\n\n    You can also add your credentials to an existing key, using these values:\n\n    Package name:\n    com.example.bottomnavmenu\n\n    SHA-1 certificate fingerprint:\n    75:89:5F:07:19:46:79:85:16:FA:7C:F9:88:15:69:64:05:29:D6:68\n\n    Alternatively, follow the directions here:\n    https://developers.google.com/maps/documentation/android/start#get-key\n\n    Once you have your key (it starts with \"AIza\"), replace the \"google_maps_key\"\n    string in this file.\n    -->\n    <string name=\"google_maps_key\" templateMergeStrategy=\"preserve\" translatable=\"false\">Add your key here</string>\n</resources>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/debug/res/values/google_maps_api.xml b/app/src/debug/res/values/google_maps_api.xml
+--- a/app/src/debug/res/values/google_maps_api.xml	(revision b9491e648f52402bd3464b913c8bf7e9e426fb21)
++++ b/app/src/debug/res/values/google_maps_api.xml	(date 1670237726446)
+@@ -20,5 +20,5 @@
+     Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+     string in this file.
+     -->
+-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">Add your key here</string>
++    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAsXwFVl8b0SkqomGIAyBh1DA1psyUwj1Q</string>
+ </resources>
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_1_7\" project-jdk-name=\"12\" project-jdk-type=\"JavaSDK\">\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\n  </component>\n  <component name=\"ProjectType\">\n    <option name=\"id\" value=\"Android\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision b9491e648f52402bd3464b913c8bf7e9e426fb21)
++++ b/.idea/misc.xml	(date 1670237655900)
+@@ -1,6 +1,9 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="12" project-jdk-type="JavaSDK">
++  <component name="FrameworkDetectionExcludesConfiguration">
++    <file type="web" url="file://$PROJECT_DIR$" />
++  </component>
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="12" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+   <component name="ProjectType">
