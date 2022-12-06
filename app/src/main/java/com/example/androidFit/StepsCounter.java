@@ -179,7 +179,7 @@ public class StepsCounter extends AppCompatActivity implements SensorEventListen
                                             : dataSet.getDataPoints().get(0).getValue(Field.FIELD_STEPS).asInt();
                             Log.d(TAG, "Total steps: " + total);
                             //display counts on screen
-//                            counter.setText(String.format(Locale.ENGLISH, "%d", total));
+                            counter.setText(String.format(Locale.ENGLISH, "%d", total));
                         })
                 .addOnFailureListener(
                         e -> Log.w(TAG, "There was a problem getting the step count.", e));

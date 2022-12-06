@@ -123,6 +123,7 @@
             android:id="@+id/counter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/cardview_light_background"
             android:text="0"
             android:textSize="36dp" />
 
@@ -142,17 +143,31 @@
 
 
         <TextView
+            android:id="@+id/week_counter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Steps count since reboot"
-            android:textSize="20dp" />
-
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
         <TextView
-            android:id="@+id/count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textSize="36dp" />
+            android:id="@+id/textView"
+            android:layout_width="360dp"xs
+            android:layout_height="290dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="Your last 7 days are"
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/counter"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="10dp" />
 
 
     </LinearLayout>

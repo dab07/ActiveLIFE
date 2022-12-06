@@ -59,10 +59,6 @@ public class CardAdapterForView extends RecyclerView.Adapter<CardAdapterForView.
                 cardViewHolder.imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.hdsleep));
                 break;
 
-            case "Weight" :
-                cardViewHolder.imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.weight));
-                break;
-
             case "Calories" :
                 cardViewHolder.imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.calories));
                 break;
@@ -100,9 +96,6 @@ public class CardAdapterForView extends RecyclerView.Adapter<CardAdapterForView.
                             showCaloriesStats();
                             break;
                         case 1:
-                            showWeightStats();
-                            break;
-                        case 2:
                             showSleepingStats();
                             break;
 
@@ -122,13 +115,6 @@ public class CardAdapterForView extends RecyclerView.Adapter<CardAdapterForView.
 
         }
 
-
-        private void showWeightStats()
-        {
-            Intent intent = new Intent(context , ViewWeight.class);
-            context.startActivity(intent);
-
-        }
 
         private void showCaloriesStats()
         {

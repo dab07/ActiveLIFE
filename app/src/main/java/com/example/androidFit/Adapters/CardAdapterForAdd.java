@@ -60,9 +60,6 @@ public class CardAdapterForAdd extends RecyclerView.Adapter<CardAdapterForAdd.Ca
                 cardViewHolder.imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.hdsleep));
                 break;
 
-            case "Weight" :
-                cardViewHolder.imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.weight));
-                break;
 
             case "Calories" :
                 cardViewHolder.imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.calories));
@@ -101,9 +98,6 @@ public class CardAdapterForAdd extends RecyclerView.Adapter<CardAdapterForAdd.Ca
                             addSleepPopup();
                             break;
                         case 1:
-                            addWeightPopup();
-                            break;
-                        case 2:
                             addCaloriesPopup();
                             break;
 
@@ -172,37 +166,6 @@ public class CardAdapterForAdd extends RecyclerView.Adapter<CardAdapterForAdd.Ca
 
         }
 
-
-        private void addWeightPopup()
-        {
-            final EditText displayText;
-            Button addButton;
-
-            final Dialog dialog = new Dialog(context);
-            dialog.setContentView(R.layout.add_weight_dialog);
-
-
-            displayText = dialog.findViewById(R.id.displayText);
-
-            addButton =  dialog.findViewById(R.id.addButton);
-
-
-
-            addButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    Toast.makeText(context, "weight added = "+ displayText.getText()+ " kg" , Toast.LENGTH_SHORT).show();
-
-                    DbHandler.addWeight(Float.parseFloat(displayText.getText().toString()));
-
-                    dialog.dismiss();
-                }
-            });
-
-            dialog.show();
-
-        }
 
         private void addCaloriesPopup()
         {

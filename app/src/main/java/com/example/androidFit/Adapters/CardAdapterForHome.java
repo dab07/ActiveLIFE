@@ -49,18 +49,7 @@ public class CardAdapterForHome extends RecyclerView.Adapter<CardAdapterForHome.
 
         Card card = list.get(i);
         cardViewHolder.textView.setText(card.getName());
-
-        switch (card.getName())
-        {
-            case "Weight Loss Suggestion":
-                cardViewHolder.imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.weight_loss));
-                break;
-
-            case "Weight Gain Suggestion" :
-                cardViewHolder.imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.weight_gain));
-                break;
-        }
-
+        cardViewHolder.imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.app_icon_round));
 
 
     }
@@ -82,41 +71,6 @@ public class CardAdapterForHome extends RecyclerView.Adapter<CardAdapterForHome.
 
 
 
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    switch (getAdapterPosition())
-                    {
-                        case 0:
-                            openWeightLossActivity();
-                            break;
-                        case 1:
-                            openWeightGainActivity();
-                            break;
-
-                    }
-                }
-            });
-
-
-
-        }
-
-
-        private void openWeightLossActivity()
-        {
-            Intent intent = new Intent(context , WeightLoss.class);
-            context.startActivity(intent);
-
-        }
-
-
-        private void openWeightGainActivity()
-        {
-            Intent intent = new Intent(context , WeightGain.class);
-            context.startActivity(intent);
 
         }
 
